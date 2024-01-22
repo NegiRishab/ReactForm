@@ -8,7 +8,7 @@ import RadioInput from '../utills/RadioInput';
 import Button from '../utills/Button';
 import { useForm } from 'react-hook-form';
 // import { DevTool } from '@hookform/devtools'
-
+import config from "../config";
 export default function RegistrationUseFomhook() {
     const formdata = useSelector(state => state.formsubmit.formdata);
     const userid = localStorage.getItem('id');
@@ -18,7 +18,7 @@ export default function RegistrationUseFomhook() {
                 if (userid) {
                     const options = {
                         method: "GET",
-                        url: `http://localhost:3001/form/getformdata/${userid}`
+                        url:config.ROOTURL.prod +`/form/getformdata/${userid}`
                     };
                     const res = axios(options);
                     const response = await res;
@@ -65,10 +65,10 @@ export default function RegistrationUseFomhook() {
         let Url;
         let Data;
         if (isEditopen) {
-            Url = "http://localhost:3001/form/editformdata"
+            Url =config.ROOTURL.prod+ "/form/editformdata"
             Data = { id: formdata._id, ...data1 }
         } else {
-            Url = "http://localhost:3001/form/saveformdata"
+            Url = config.ROOTURL.prod+"/form/saveformdata"
             Data = { ...data1 }
 
         }

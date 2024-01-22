@@ -9,6 +9,7 @@ import Selectinput from '../utills/Selectinput';
 import CheckboxInput from '../utills/CheckboxInput';
 import RadioInput from '../utills/RadioInput';
 import Button from '../utills/Button';
+import config from "../config";
 // import { handleFormdata, handleformclose } from './ActionCreator';
 
 
@@ -60,10 +61,10 @@ export default function RegistrationForm() {
         let Url;
         let Data;
         if (isEditopen) {
-            Url = "http://localhost:3001/form/editformdata"
+            Url = config.ROOTURL.prod+"/form/editformdata"
             Data = { id: formdata._id, ...data }
         } else {
-            Url = "http://localhost:3001/form/saveformdata"
+            Url =config.ROOTURL.prod+ "/form/saveformdata"
             Data = { ...data }
 
         }

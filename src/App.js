@@ -11,8 +11,10 @@ import RegistrationUseFomhook from "./components/RegistrationUseFomhook";
 import { useForm } from "react-hook-form";
 import UseMemoComponent from "./components/UseMemoComponent";
 import { Suspense } from "react";
+import config from "./config";
 
 function App() {
+  console.log(global)
   //  const {isFormnotset}=useMyContext();
   const isFormnotset = useSelector(state => state.formsubmit.isFormnotset);
   const { register, handleSubmit, formState } = useForm();
@@ -26,7 +28,7 @@ const UseMemoComponent=lazy(()=>import ('./components/UseMemoComponent'))
     if (!data1) return;
     const getuserinfo = {
       method: 'Post',
-      url: 'http://localhost:3001/form/isUserExist',
+      url: config.ROOTURL.prod+ '/form/isUserExist',
       data: { ...data1 }
     }
     axios(getuserinfo).

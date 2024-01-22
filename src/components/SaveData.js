@@ -6,7 +6,7 @@ import { handleEditformOpen, handleEditformclose, handleFormdata, handleformOpen
 import axios from 'axios';
 import { toast } from 'react-toastify';
 // import { handleFormdata, handleformOpen } from './ActionCreator';
-
+import config from "../config";
 export default function SaveData() {
   const userid = localStorage.getItem('id')
   const [userDAta, setUserDAta] = useState([]);
@@ -14,7 +14,7 @@ export default function SaveData() {
   // const {handleFormdata,formdata,handleformOpen}=useMyContext();
 
   const handleEditDetails = () => {
-    console.log('userDAta', userDAta)
+    // console.log('userDAta', userDAta)
     dispatch(handleFormdata(userDAta))
     // handleFormdata(userDAta)
     dispatch(handleformOpen(false));
@@ -26,7 +26,7 @@ export default function SaveData() {
   const handleDelete = () => {
     const requestdata = {
       method: 'Post',
-      url: "http://localhost:3001/form/delete",
+      url:config.ROOTURL.prod + "/form/delete",
       data: {
         id: userid
       }
@@ -44,7 +44,7 @@ export default function SaveData() {
 
     const options = {
       method: "GET",
-      url: `http://localhost:3001/form/getformdata/${userid}`
+      url:config.ROOTURL.prod+ `/form/getformdata/${userid}`
     };
     axios(options).then((data) => {
       console.log(data)
