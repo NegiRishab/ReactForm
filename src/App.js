@@ -27,11 +27,16 @@ const UseMemoComponent=lazy(()=>import ('./components/UseMemoComponent'))
   const handleuserinfo = (data1) => {
     if (!data1) return;
     const getuserinfo = {
-      method: 'Post',
-      url: config.ROOTURL.prod+ '/form/isUserExist',
+      method: 'POST',
+      url: config.ROOTURL.prod + '/form/isUserExist',
       withCredentials: true,
-      data: { ...data1 }
-    }
+      headers: {  // Use 'headers' instead of 'header'
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      data: { ...data1 },
+    };
+    
     axios(getuserinfo).
       then((data) => {
 
