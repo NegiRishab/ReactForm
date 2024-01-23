@@ -29,11 +29,6 @@ const UseMemoComponent=lazy(()=>import ('./components/UseMemoComponent'))
     const getuserinfo = {
       method: 'POST',
       url: config.ROOTURL.prod + '/form/isUserExist',
-      withCredentials: true,
-      headers: {  // Use 'headers' instead of 'header'
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
       data: { ...data1 },
     };
     
