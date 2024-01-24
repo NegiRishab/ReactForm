@@ -1,7 +1,7 @@
  const config = {
     ROOTURL: {
       // prod: "http://localhost:3002",
-      prod: "https://form-backend-nodejs-zc4x.vercel.app"
+      prod: "https://vercel.com/negirishab/form-backend-nodejs"
     },
   };
 
